@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+  
+  <!-- Add the following Firebase scripts right before the closing </head> tag -->
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+  <!-- Add the Firebase products you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <!-- Add any other required Firebase products -->
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="build/web/">
-
+  <!-- Add your project's configuration object -->
+  <base href="$FLUTTER_BASE_HREF">
+  <script type="module" src="firebase_init.js"></script>
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
@@ -36,8 +35,12 @@
     // The value below is injected by flutter build, do not touch.
     var serviceWorkerVersion = null;
   </script>
+  
+<!--   <script src="flutter_service_worker.js"></script> -->
+
+
   <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
+<script src="flutter.js" defer></script>
 </head>
 <body>
   <script>
