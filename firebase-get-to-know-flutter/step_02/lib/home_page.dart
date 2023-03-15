@@ -14,6 +14,7 @@ import 'src/authentication.dart';
 import 'src/widgets.dart';
 import 'guest_book.dart';
 import 'yes_no_selection.dart';
+import 'video.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,14 +23,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Firebase Meetup'),
+        title: const Text('Meetup'),
       ),
       body: ListView(
         children: <Widget>[
-          Image.asset('assets/codelab.png'),
+          YouTubeVideoWidget(videoId: 'IFCDLIKSArs'),
           const SizedBox(height: 8),
-          const IconAndDetail(Icons.calendar_today, 'October 30'),
-          const IconAndDetail(Icons.location_city, 'San Francisco'),
+          const IconAndDetail(Icons.calendar_today, 'March 25'),
+          const IconAndDetail(Icons.location_city, 'Zug'),
           Consumer<ApplicationState>(
             builder: (context, appState, _) => AuthFunc(
                 loggedIn: appState.loggedIn,
@@ -44,20 +45,21 @@ class HomePage extends StatelessWidget {
             endIndent: 8,
             color: Colors.grey,
           ),
-          const Header("What we'll be doing"),
+          const Header(
+              "Und wieder ist es der 25., der wird für immer eine andere Bedeutung haben 💛"),
           const Paragraph(
-            'Join us for a day full of Firebase Workshops and Pizza!',
+            'Vielleicht gibt es wieder einen Workshop',
           ),
           Consumer<ApplicationState>(
             builder: (context, appState, _) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (appState.attendees >= 2)
-                  Paragraph('${appState.attendees} people going')
+                  Paragraph('${appState.attendees} Personen nehmen Teil')
                 else if (appState.attendees == 1)
-                  const Paragraph('1 person going')
+                  const Paragraph('1 Person nimmt teil')
                 else
-                  const Paragraph('No one going'),
+                  const Paragraph('Niemand nimmt teil'),
                 if (appState.loggedIn) ...[
                   YesNoSelection(
                     state: appState.attending,

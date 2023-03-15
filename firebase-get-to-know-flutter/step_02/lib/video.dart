@@ -1,50 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
-import 'package:chewie/chewie.dart';
-import 'dart:html' as html;
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
-class VideoPlayerWidget extends StatefulWidget {
-  final String videoUrl;
+class YouTubeVideoWidget extends StatelessWidget {
+  final String videoId;
 
-  VideoPlayerWidget({required this.videoUrl});
-
-  @override
-  _VideoPlayerWidgetState createState() => _VideoPlayerWidgetState();
-}
-
-class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
-  late VideoPlayerController _videoPlayerController;
-  late ChewieController _chewieController;
-
-  @override
-  void initState() {
-    super.initState();
-    _videoPlayerController = VideoPlayerController.network(widget.videoUrl);
-    _chewieController = ChewieController(
-      videoPlayerController: _videoPlayerController,
-      autoInitialize: true,
-      looping: false,
-      autoPlay: false,
-      allowFullScreen: true,
-      allowMuting: true,
-      materialProgressColors: ChewieProgressColors(
-        playedColor: Colors.red,
-        handleColor: Colors.blue,
-        backgroundColor: Colors.grey,
-        bufferedColor: Colors.lightGreen,
-      ),
-    );
-  }
+  YouTubeVideoWidget({required this.videoId});
 
   @override
   Widget build(BuildContext context) {
-    return Chewie(controller: _chewieController);
-  }
-
-  @override
-  void dispose() {
-    _videoPlayerController.dispose();
-    _chewieController.dispose();
-    super.dispose();
+    return HtmlWidget(
+      '<iframe width="560" height="315" src="https://www.youtube.com/embed/$videoId" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+      webView: true,
+    );
   }
 }
