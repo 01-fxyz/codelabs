@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart'; // new
 import 'app_state.dart'; // new
 import 'home_page.dart';
+import 'package:youtube_plyr_iframe/youtube_plyr_iframe.dart';
 
 void main() {
 /*   runApp(const App());
